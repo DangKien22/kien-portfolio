@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env*
+!.env.example
+*.local
+desktop.ini
+/public/CV_Dang_Trung_Kien_FE.pdf
+/public/images/cristiano-ronaldo.jpg
