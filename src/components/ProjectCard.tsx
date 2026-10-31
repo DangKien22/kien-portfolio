@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { Project } from '../types/project'
 
 interface ProjectCardProps {
@@ -7,10 +7,13 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+  const { t } = useTranslation()
+  const itemKey = `projects.items.${project.id}`
+  const name = t(`${itemKey}.name`)
   const artContent = (
     <>
-      <span className="art-index">0{index + 1} / SELECTED WORK</span>
-      <span className="art-category">{project.category}</span>
+      <span className="art-index">0{index + 1} / {t('projects.selectedWork')}</span>
+      <span className="art-category">{t(`projects.categories.${project.category}`)}</span>
       <div className="art-window" aria-hidden="true">
         <div className="window-top"><span /><span /><span /></div>
         <div className="window-body">
@@ -18,60 +21,49 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           <div className="window-graphic">{project.technologies[0]?.slice(0, 3).toUpperCase()}</div>
         </div>
       </div>
-      <span className="art-mark" aria-hidden="true">{project.name.slice(0, 1)}</span>
+      <span className="art-mark" aria-hidden="true">{name.slice(0, 1)}</span>
     </>
   )
 
   return (
     <article className="project-card" data-reveal aria-labelledby={`project-${project.id}`}>
-      {project.href ? (
-        <a
-          className={`project-art art-${project.accent}`}
-          href={project.href}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`View ${project.name} project`}
-        >
-          {artContent}
-        </a>
-      ) : (
-        <div
-          className={`project-art art-${project.accent}`}
-          role="img"
-          aria-label={`Decorative fictional project preview for ${project.name}; no live project link is provided.`}
-        >
-          {artContent}
-        </div>
-      )}
+      <div
+        className={`project-art art-${project.accent}`}
+        role="img"
+        aria-label={t('projects.projectPreviewAria', { name })}
+      >
+        {artContent}
+      </div>
       <div className="project-meta">
         <div>
-          <p className="eyebrow">{project.category} <span>·</span> {project.period}</p>
-          <h3 id={`project-${project.id}`}>{project.name}</h3>
-          <p className="project-description">{project.description}</p>
+          <p className="eyebrow">{t(`projects.categories.${project.category}`)} <span>·</span> {project.period}</p>
+          <h3 id={`project-${project.id}`}>{name}</h3>
+          <p className="project-description">{t(`${itemKey}.overview`)}</p>
           <dl className="project-case-study">
             <div>
-              <dt>Problem</dt>
-              <dd>{project.problem}</dd>
+              <dt>{t('projects.client')}</dt>
+              <dd>{t(`${itemKey}.client`)}</dd>
             </div>
             <div>
-              <dt>Built</dt>
-              <dd>{project.built}</dd>
+              <dt>{t('projects.domain')}</dt>
+              <dd>{t(`${itemKey}.domain`)}</dd>
             </div>
             <div>
-              <dt>Outcome</dt>
-              <dd>{project.outcome}</dd>
+              <dt>{t('projects.role')}</dt>
+              <dd>{t(`${itemKey}.role`)}</dd>
+            </div>
+            <div>
+              <dt>{t('projects.teamSize')}</dt>
+              <dd>{t(`${itemKey}.teamSize`)}</dd>
+            </div>
+            <div>
+              <dt>{t('projects.responsibilities')}</dt>
+              <dd>{t(`${itemKey}.responsibilities`)}</dd>
             </div>
           </dl>
-          <div className="project-links" aria-label={`${project.name} links`}>
-            {project.href ? (
-              <a className="text-link" href={project.href} target="_blank" rel="noreferrer">View project <ArrowUpRight size={14} /></a>
-            ) : (
-              <span>Fictional concept · preview only</span>
-            )}
-          </div>
         </div>
       </div>
-      <ul className="tag-list" aria-label="Technologies">
+      <ul className="tag-list" aria-label={t('projects.technologies')}>
         {project.technologies.map((technology) => <li key={technology}>{technology}</li>)}
       </ul>
     </article>

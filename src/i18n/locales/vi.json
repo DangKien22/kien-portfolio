@@ -1,0 +1,227 @@
+{
+  "metadata": {
+    "title": "Đặng Trung Kiên — Lập trình viên Front-end",
+    "description": "Portfolio của Đặng Trung Kiên, lập trình viên Front-end với hơn 2,5 năm kinh nghiệm."
+  },
+  "navigation": {
+    "skipToContent": "Chuyển đến nội dung",
+    "pageSections": "Các mục trên trang",
+    "main": "Điều hướng chính",
+    "index": "Trang đầu",
+    "about": "Giới thiệu",
+    "experience": "Kinh nghiệm",
+    "projects": "Dự án",
+    "contact": "Liên hệ",
+    "language": "Ngôn ngữ",
+    "chapter": "{{number}} · {{label}}",
+    "homeLabel": "{{name}} — trang chủ",
+    "closeMenu": "Đóng menu",
+    "openMenu": "Mở menu"
+  },
+  "footer": {
+    "backToTop": "Lên đầu trang"
+  },
+  "hero": {
+    "nameFirst": "Trung",
+    "nameLast": "Kiên.",
+    "availability": "Phát triển phần mềm & giao diện",
+    "role": "Lập trình viên Front-end",
+    "stackFirst": "ReactJS",
+    "stackSecond": "TypeScript",
+    "location": "Hà Nội, Việt Nam",
+    "summary": "Lập trình viên Front-end với hơn 2,5 năm kinh nghiệm xây dựng ứng dụng web đáp ứng. Tôi sử dụng React.js và các công nghệ liên quan, tập trung vào thiết kế lấy người dùng làm trung tâm, mã nguồn rõ ràng và chức năng ổn định.",
+    "selectedWork": "Xem dự án tiêu biểu",
+    "meet": "Gặp Kiên",
+    "coordinates": "REACTJS\nJAVASCRIPT\nGIAO DIỆN ĐÁP ỨNG",
+    "visualCaption": "Frontend · Trải nghiệm số",
+    "reusableInterfaces": "Ứng dụng web đáp ứng",
+    "yearsBuilding": "Hơn 2,5 năm phát triển web",
+    "bottomSkills": "ReactJS · JavaScript · Giao diện đáp ứng",
+    "visualLabel": "Hình minh họa portfolio giới thiệu lĩnh vực phát triển frontend."
+  },
+  "about": {
+    "eyebrow": "Giới thiệu",
+    "titleThoughtful": "Giao diện chỉn chu.",
+    "titleUseful": "Trải nghiệm",
+    "titleExperiences": "hữu ích.",
+    "description": "Tôi là lập trình viên Front-end có kinh nghiệm xây dựng ứng dụng web đáp ứng và giao diện tương tác. Tôi phối hợp với nhóm backend để tích hợp API, làm rõ yêu cầu thành giải pháp phù hợp, đồng thời cải thiện hiệu năng và chất lượng mã nguồn.",
+    "educationPeriod": "2018 – 2022",
+    "school": "Đại học Công nghiệp Hà Nội",
+    "degree": "Kỹ sư Phần mềm"
+  },
+  "skills": {
+    "eyebrow": "Năng lực",
+    "howIWork": "Cách tôi làm việc",
+    "description": "Công nghệ và công cụ tôi đã sử dụng trong công việc frontend.",
+    "areas": "Các lĩnh vực năng lực",
+    "sampleProof": "Trọng tâm",
+    "items": {
+      "frontend": {
+        "title": "Phát triển frontend",
+        "skills": ["HTML", "CSS", "JavaScript", "TypeScript"],
+        "proofTitle": "Giao diện đáp ứng",
+        "proof": "Xây dựng ứng dụng web và giao diện tương tác đáp ứng, chú trọng khả năng tương thích giữa các trình duyệt."
+      },
+      "frameworks": {
+        "title": "Framework & thư viện",
+        "skills": ["ReactJS", "Gatsby", "Next.js", "Angular", "Vue.js"],
+        "proofTitle": "Framework frontend",
+        "proof": "Có kinh nghiệm với ReactJS và các framework, thư viện liên quan như Gatsby, Next.js, Angular và Vue.js."
+      },
+      "api-cms": {
+        "title": "API & CMS",
+        "skills": ["RESTful API", "GraphQL", "Apollo Client", "WordPress", "WP-GraphQL", "Magento PWA"],
+        "proofTitle": "Tích hợp API & CMS",
+        "proof": "Tích hợp RESTful API, GraphQL và tham gia các dự án CMS sử dụng WordPress, Gatsby."
+      },
+      "tools": {
+        "title": "Công cụ & phối hợp",
+        "skills": ["Git", "Agile/Scrum", "Jira", "Trello"],
+        "proofTitle": "Quy trình làm việc nhóm",
+        "proof": "Sử dụng Git và phương pháp Agile/Scrum, phối hợp công việc qua Jira và Trello."
+      }
+    }
+  },
+  "experience": {
+    "eyebrow": "Kinh nghiệm",
+    "titleFrom": "Từ giao diện",
+    "titleTo": "đến trải nghiệm sản phẩm.",
+    "description": "Hơn 2,5 năm kinh nghiệm phát triển frontend tại AHT JSC.",
+    "roles": {
+      "aht": {
+        "company": "AHT JSC",
+        "role": "Lập trình viên Front-end",
+        "period": "2022 – 01/2025",
+        "highlights": [
+          "Phân tích yêu cầu, đề xuất giải pháp và xây dựng giao diện hiện đại, tương tác tốt, đáp ứng nhiều thiết bị và trình duyệt.",
+          "Phối hợp với nhóm backend để tích hợp RESTful API và GraphQL.",
+          "Tối ưu mã nguồn và hiệu năng cho nhiều dự án thương mại điện tử và quản lý.",
+          "Bảo trì website và ứng dụng, sửa lỗi, phát triển tính năng mới."
+        ]
+      }
+    }
+  },
+  "projects": {
+    "homeEyebrow": "Dự án",
+    "homeTitlePublic": "Dự án tiêu biểu,",
+    "homeTitleSample": "từ kinh nghiệm thực tế.",
+    "exploreAll": "Khám phá mọi dự án",
+    "selectedWork": "Dự án tiêu biểu",
+    "projectPreviewAria": "Hình minh họa portfolio cho dự án {{name}}.",
+    "client": "Khách hàng",
+    "domain": "Lĩnh vực",
+    "role": "Vai trò",
+    "teamSize": "Quy mô nhóm",
+    "responsibilities": "Trách nhiệm",
+    "technologies": "Công nghệ",
+    "pageEyebrow": "Kinh nghiệm dự án",
+    "pageTitle": "Ý tưởng",
+    "pageTitleMuted": "tiêu biểu.",
+    "pageDescription": "Các dự án thương mại điện tử, quản lý, doanh nghiệp và giáo dục trong kinh nghiệm frontend của tôi.",
+    "filterByCategory": "Lọc theo danh mục",
+    "categories": {
+      "all": "Tất cả",
+      "ecommerce": "Thương mại điện tử",
+      "management": "Quản lý",
+      "enterprise": "Doanh nghiệp",
+      "education": "Giáo dục"
+    },
+    "searchLabel": "Tìm kiếm dự án",
+    "searchPlaceholder": "Tìm kiếm dự án...",
+    "noMatches": "Không tìm thấy dự án phù hợp",
+    "tryDifferent": "Hãy thử từ khóa khác hoặc chọn danh mục khác.",
+    "clearFilters": "Xóa bộ lọc",
+    "resultsCount": "{{visible}} / {{total}} dự án",
+    "items": {
+      "admin-services": {
+        "name": "Admin Services",
+        "overview": "Website dịch vụ quản trị, hỗ trợ quản lý thông tin nhân viên và khách hàng, bao gồm quản lý ra vào và thư từ.",
+        "client": "MB Bank",
+        "domain": "Quản lý thông tin",
+        "role": "Lập trình viên Frontend",
+        "teamSize": "5 người",
+        "responsibilities": "Làm rõ yêu cầu với khách hàng, phối hợp backend tích hợp API, xây dựng giao diện theo Figma và tối ưu hiệu năng, mã nguồn."
+      },
+      "japan-flow": {
+        "name": "Japan Flow",
+        "overview": "Website thương mại điện tử chuyên kinh doanh các sản phẩm văn hóa Nhật Bản.",
+        "client": "Nhật Bản",
+        "domain": "Thương mại điện tử",
+        "role": "Lập trình viên Frontend",
+        "teamSize": "15 người",
+        "responsibilities": "Làm rõ yêu cầu với khách hàng, phối hợp backend tích hợp API, xây dựng giao diện theo Figma và tối ưu hiệu năng, mã nguồn."
+      },
+      "aht-ito": {
+        "name": "AHT ITO",
+        "overview": "Website giới thiệu AHT, công ty phát triển phần mềm cung cấp dịch vụ thuê ngoài CNTT.",
+        "client": "AHT, Việt Nam",
+        "domain": "Website doanh nghiệp",
+        "role": "Lập trình viên Frontend",
+        "teamSize": "5 người",
+        "responsibilities": "Làm rõ yêu cầu, phối hợp backend tích hợp API, xây dựng giao diện theo Figma và tối ưu hiệu năng, mã nguồn."
+      },
+      "please-speak": {
+        "name": "Please Speak",
+        "overview": "Website học và luyện kiểm tra tiếng Anh có tích hợp AI.",
+        "client": "Việt Nam",
+        "domain": "Giáo dục",
+        "role": "Lập trình viên Frontend",
+        "teamSize": "10 người",
+        "responsibilities": "Làm rõ yêu cầu, phối hợp backend tích hợp API, xây dựng giao diện theo Figma và tối ưu hiệu năng, mã nguồn."
+      },
+      "nextrend": {
+        "name": "Nextrend",
+        "overview": "Website đặt mua đồ nội thất tại Úc.",
+        "client": "Úc",
+        "domain": "Thương mại điện tử",
+        "role": "Lập trình viên Frontend",
+        "teamSize": "10 người",
+        "responsibilities": "Làm rõ yêu cầu, phối hợp backend tích hợp API, xây dựng giao diện theo Figma và tối ưu hiệu năng, mã nguồn."
+      },
+      "ionah": {
+        "name": "Ionah",
+        "overview": "Website thương mại điện tử của một công ty điện tử.",
+        "client": "Việt Nam",
+        "domain": "Thương mại điện tử",
+        "role": "Lập trình viên Frontend",
+        "teamSize": "20 người",
+        "responsibilities": "Làm rõ yêu cầu, phối hợp backend tích hợp API, xây dựng giao diện theo Figma và tối ưu hiệu năng, mã nguồn."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Liên hệ",
+    "titleStart": "Cùng xây dựng",
+    "titleEnd": "điều tiếp theo.",
+    "description": "Liên hệ với tôi về cơ hội phát triển frontend và các dự án qua email.",
+    "email": "Email"
+  },
+  "intro": {
+    "ariaLabel": "Phần giới thiệu portfolio tùy chọn",
+    "kicker": "Tương tác tùy chọn · Portfolio Trung Kiên",
+    "title": "Bắt các gói tin.",
+    "description": "Bắt bốn gói tin 64 KB hư cấu. Đây là minh họa trực quan, không mô phỏng lưu lượng mạng hay quá trình tải trang.",
+    "gameLabel": "Trò chơi bắt gói tin",
+    "caughtMarker": "ĐÃ BẮT",
+    "hint": "Di chuyển vòng tròn bằng chuột hoặc phím mũi tên. Nhấp, chạm, kéo-thả hoặc nhấn Space/Enter gần một gói tin.",
+    "packetsCaught": "Gói tin đã bắt",
+    "progressLabel": "Số gói tin minh họa đã bắt",
+    "sceneStatusLabel": "Trạng thái cảnh 3D",
+    "sceneIdle": "Bản xem trước 2D nhẹ · tương tác để tải cảnh 3D tùy chọn",
+    "sceneInitializing": "Đang chuẩn bị cảnh 3D tùy chọn…",
+    "sceneReady": "Cảnh Three.js đã sẵn sàng",
+    "sceneFallback": "Dùng cảnh 2D thay thế · WebGL không khả dụng",
+    "skip": "Bỏ qua giới thiệu",
+    "continue": "Tiếp tục đến portfolio",
+    "statusMove": "Di chuyển vòng bắt đến gói tin, sau đó nhấp hoặc nhấn Space.",
+    "statusOutOfRange": "Không có gói tin trong phạm vi. Hãy đến gần điểm đánh dấu 64 KB hơn rồi thử lại.",
+    "statusAllCaught": "Đã bắt cả bốn gói tin minh họa. Bạn có thể tiếp tục đến portfolio bất cứ lúc nào.",
+    "statusCaught": "Đã bắt gói tin. Thu thập {{caught}}/ {{total}} gói tin minh họa."
+  },
+  "notFound": {
+    "eyebrow": "404 — không tìm thấy trang",
+    "title": "Có vẻ bạn đang lạc đường.",
+    "subtitle": "Chuyện thường thôi.",
+    "backHome": "Về trang chủ"
+  }
+}

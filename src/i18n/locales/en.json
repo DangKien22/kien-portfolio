@@ -1,0 +1,227 @@
+{
+  "metadata": {
+    "title": "Dang Trung Kien — Front-end Developer",
+    "description": "Portfolio of Dang Trung Kien, a Front-end Developer with 2.5+ years of experience."
+  },
+  "navigation": {
+    "skipToContent": "Skip to content",
+    "pageSections": "Page sections",
+    "main": "Main navigation",
+    "index": "Index",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact",
+    "language": "Language",
+    "chapter": "{{number}} · {{label}}",
+    "homeLabel": "{{name}} — home",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu"
+  },
+  "footer": {
+    "backToTop": "Back to top"
+  },
+  "hero": {
+    "nameFirst": "Trung",
+    "nameLast": "Kiên.",
+    "availability": "Software & frontend development",
+    "role": "Front-end Developer",
+    "stackFirst": "ReactJS",
+    "stackSecond": "TypeScript",
+    "location": "Hanoi, Vietnam",
+    "summary": "Front-end Developer with 2.5+ years of experience building responsive web applications. I work with React.js and related technologies, focusing on user-centered design, clean code, and reliable functionality.",
+    "selectedWork": "See selected work",
+    "meet": "Meet Kiên",
+    "coordinates": "REACTJS\nJAVASCRIPT\nRESPONSIVE UI",
+    "visualCaption": "Frontend · Digital experiences",
+    "reusableInterfaces": "Responsive web applications",
+    "yearsBuilding": "2.5+ years building for the web",
+    "bottomSkills": "ReactJS · JavaScript · Responsive UI",
+    "visualLabel": "Portfolio visual highlighting frontend development."
+  },
+  "about": {
+    "eyebrow": "About",
+    "titleThoughtful": "Thoughtful interfaces.",
+    "titleUseful": "Useful",
+    "titleExperiences": "experiences.",
+    "description": "I am a Front-end Developer with experience building responsive web applications and interactive user interfaces. I collaborate with backend teams to integrate APIs, refine requirements into practical solutions, and improve performance and code quality.",
+    "educationPeriod": "2018 – 2022",
+    "school": "Hanoi University of Industry",
+    "degree": "Software Engineer"
+  },
+  "skills": {
+    "eyebrow": "Capabilities",
+    "howIWork": "How I work",
+    "description": "Technologies and tools used across my frontend work.",
+    "areas": "Capability areas",
+    "sampleProof": "Focus",
+    "items": {
+      "frontend": {
+        "title": "Frontend development",
+        "skills": ["HTML", "CSS", "JavaScript", "TypeScript"],
+        "proofTitle": "Responsive interfaces",
+        "proof": "Build responsive web applications and interactive interfaces with attention to cross-browser compatibility."
+      },
+      "frameworks": {
+        "title": "Frameworks & libraries",
+        "skills": ["ReactJS", "Gatsby", "Next.js", "Angular", "Vue.js"],
+        "proofTitle": "Frontend frameworks",
+        "proof": "Experience with ReactJS and related frameworks and libraries, including Gatsby, Next.js, Angular, and Vue.js."
+      },
+      "api-cms": {
+        "title": "API & CMS",
+        "skills": ["RESTful API", "GraphQL", "Apollo Client", "WordPress", "WP-GraphQL", "Magento PWA"],
+        "proofTitle": "API integration & CMS",
+        "proof": "Integrate RESTful APIs and GraphQL, and contribute to CMS projects built with WordPress and Gatsby."
+      },
+      "tools": {
+        "title": "Tools & collaboration",
+        "skills": ["Git", "Agile/Scrum", "Jira", "Trello"],
+        "proofTitle": "Team workflow",
+        "proof": "Work with Git and Agile/Scrum practices, using Jira and Trello for project coordination."
+      }
+    }
+  },
+  "experience": {
+    "eyebrow": "Experience",
+    "titleFrom": "From interfaces",
+    "titleTo": "to product experiences.",
+    "description": "More than 2.5 years of frontend development experience at AHT JSC.",
+    "roles": {
+      "aht": {
+        "company": "AHT JSC",
+        "role": "Frontend Developer",
+        "period": "2022 – Jan 2025",
+        "highlights": [
+          "Analyzed requirements, designed solutions, and built modern, interactive interfaces with responsive and cross-browser support.",
+          "Collaborated with backend teams to integrate RESTful APIs and GraphQL.",
+          "Optimized code and performance across e-commerce and management projects.",
+          "Maintained websites and apps, fixed bugs, and developed new features."
+        ]
+      }
+    }
+  },
+  "projects": {
+    "homeEyebrow": "Projects",
+    "homeTitlePublic": "Selected work,",
+    "homeTitleSample": "from real projects.",
+    "exploreAll": "Explore all projects",
+    "selectedWork": "Selected work",
+    "projectPreviewAria": "Portfolio preview for the {{name}} project.",
+    "client": "Client",
+    "domain": "Domain",
+    "role": "Role",
+    "teamSize": "Team",
+    "responsibilities": "Responsibilities",
+    "technologies": "Technologies",
+    "pageEyebrow": "Project experience",
+    "pageTitle": "Project",
+    "pageTitleMuted": "experience.",
+    "pageDescription": "Selected e-commerce, management, enterprise, and education projects from my frontend experience.",
+    "filterByCategory": "Filter by category",
+    "categories": {
+      "all": "All",
+      "ecommerce": "E-commerce",
+      "management": "Management",
+      "enterprise": "Enterprise",
+      "education": "Education"
+    },
+    "searchLabel": "Search projects",
+    "searchPlaceholder": "Search projects...",
+    "noMatches": "No matching projects found",
+    "tryDifferent": "Try a different search term or choose another category.",
+    "clearFilters": "Clear filters",
+    "resultsCount": "{{visible}} / {{total}} projects",
+    "items": {
+      "admin-services": {
+        "name": "Admin Services",
+        "overview": "An administration services website for managing employee and customer information, including attendance and mail management.",
+        "client": "MB Bank",
+        "domain": "Management information",
+        "role": "Frontend Developer",
+        "teamSize": "5",
+        "responsibilities": "Refined requirements with the client, integrated APIs with the backend team, built the UI from Figma, and optimized performance and code."
+      },
+      "japan-flow": {
+        "name": "Japan Flow",
+        "overview": "An e-commerce website for selling Japanese cultural products.",
+        "client": "Japan",
+        "domain": "E-commerce",
+        "role": "Frontend Developer",
+        "teamSize": "15",
+        "responsibilities": "Refined requirements with the client, integrated APIs with the backend team, built the UI from Figma, and optimized performance and code."
+      },
+      "aht-ito": {
+        "name": "AHT ITO",
+        "overview": "A company website introducing AHT, a software development company providing IT outsourcing services.",
+        "client": "AHT, Vietnam",
+        "domain": "Company website",
+        "role": "Frontend Developer",
+        "teamSize": "5",
+        "responsibilities": "Refined requirements, integrated APIs with the backend team, built the UI from Figma, and optimized performance and code."
+      },
+      "please-speak": {
+        "name": "Please Speak",
+        "overview": "A website for learning and testing English with AI integration.",
+        "client": "Vietnam",
+        "domain": "Education",
+        "role": "Frontend Developer",
+        "teamSize": "10",
+        "responsibilities": "Refined requirements, integrated APIs with the backend team, built the UI from Figma, and optimized performance and code."
+      },
+      "nextrend": {
+        "name": "Nextrend",
+        "overview": "An online furniture ordering website for customers in Australia.",
+        "client": "Australia",
+        "domain": "E-commerce",
+        "role": "Frontend Developer",
+        "teamSize": "10",
+        "responsibilities": "Refined requirements, integrated APIs with the backend team, built the UI from Figma, and optimized performance and code."
+      },
+      "ionah": {
+        "name": "Ionah",
+        "overview": "An e-commerce website for an electronics company.",
+        "client": "Vietnam",
+        "domain": "E-commerce",
+        "role": "Frontend Developer",
+        "teamSize": "20",
+        "responsibilities": "Refined requirements, integrated APIs with the backend team, built the UI from Figma, and optimized performance and code."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "titleStart": "Let's build",
+    "titleEnd": "what's next.",
+    "description": "For frontend development opportunities and project enquiries, get in touch by email.",
+    "email": "Email"
+  },
+  "intro": {
+    "ariaLabel": "Optional portfolio introduction",
+    "kicker": "Optional interaction · Trung Kiên portfolio",
+    "title": "Catch the packets.",
+    "description": "Catch four fictional 64 KB packets. This is a visual demo; it does not represent network traffic or site loading.",
+    "gameLabel": "Packet-catching game",
+    "caughtMarker": "CAUGHT",
+    "hint": "Move the ring with your mouse or arrows. Click, tap, drag-release, or press Space/Enter near a packet.",
+    "packetsCaught": "Packets caught",
+    "progressLabel": "Demo packets caught",
+    "sceneStatusLabel": "3D scene status",
+    "sceneIdle": "Lightweight 2D preview · interact to load the optional 3D scene",
+    "sceneInitializing": "Preparing optional 3D scene…",
+    "sceneReady": "Three.js scene ready",
+    "sceneFallback": "2D scene fallback · WebGL unavailable",
+    "skip": "Skip intro",
+    "continue": "Continue to portfolio",
+    "statusMove": "Move the catcher over a packet, then click or press Space.",
+    "statusOutOfRange": "No packet in range. Move closer to a 64 KB marker and try again.",
+    "statusAllCaught": "All four demo packets caught. Continue to the portfolio whenever you are ready.",
+    "statusCaught": "Packet caught. {{caught}} of {{total}} demo packets collected."
+  },
+  "notFound": {
+    "eyebrow": "404 — page not found",
+    "title": "You seem a little lost.",
+    "subtitle": "It happens.",
+    "backHome": "Back to home"
+  }
+}

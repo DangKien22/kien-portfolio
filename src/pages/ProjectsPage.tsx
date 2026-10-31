@@ -1,28 +1,32 @@
 import { useMemo, useState } from 'react'
 import { ArrowUpRight, Search } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import ProjectCard from '../components/ProjectCard'
 import { projects } from '../data/projects'
+import type { ProjectCategory } from '../types/project'
 
-const filters = ['All', 'E-commerce', 'Management', 'Enterprise', 'Education'] as const
+const filters: Array<ProjectCategory | 'all'> = ['all', 'ecommerce', 'management', 'enterprise', 'education']
 
 export default function ProjectsPage() {
-  const [category, setCategory] = useState<(typeof filters)[number]>('All')
+  const { t } = useTranslation()
+  const [category, setCategory] = useState<(typeof filters)[number]>('all')
   const [query, setQuery] = useState('')
   const visibleProjects = useMemo(() => projects.filter((project) => {
-    const matchesCategory = category === 'All' || project.category === category
-    const searchText = `${project.name} ${project.description} ${project.technologies.join(' ')}`.toLowerCase()
+    const matchesCategory = category === 'all' || project.category === category
+    const itemKey = `projects.items.${project.id}`
+    const searchText = `${t(`${itemKey}.name`)} ${t(`${itemKey}.overview`)} ${project.technologies.join(' ')}`.toLowerCase()
     return matchesCategory && searchText.includes(query.trim().toLowerCase())
-  }), [category, query])
+  }), [category, query, t])
 
   return (
     <section className="projects-page container">
       <div className="page-intro">
-        <p className="eyebrow"><span className="eyebrow-dot" /> PROJECT EXPERIENCE</p>
-        <h1>Project<br /><span className="text-muted">concepts.</span></h1>
-        <p>A selection of fictional e-commerce, product, and learning concepts created to demonstrate frontend work.</p>
+        <p className="eyebrow"><span className="eyebrow-dot" /> {t('projects.pageEyebrow')}</p>
+        <h1>{t('projects.pageTitle')}<br /><span className="text-muted">{t('projects.pageTitleMuted')}</span></h1>
+        <p>{t('projects.pageDescription')}</p>
       </div>
       <div className="project-toolbar">
-        <div className="filter-list" aria-label="Filter by category">
+        <div className="filter-list" aria-label={t('projects.filterByCategory')}>
           {filters.map((filter) => (
             <button
               className={`filter-button${category === filter ? ' is-active' : ''}`}
@@ -30,13 +34,13 @@ export default function ProjectsPage() {
               type="button"
               aria-pressed={category === filter}
               onClick={() => setCategory(filter)}
-            >{filter}</button>
+            >{t(`projects.categories.${filter}`)}</button>
           ))}
         </div>
         <label className="search-field">
           <Search size={17} />
-          <span className="visually-hidden">Search projects</span>
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search projects..." />
+          <span className="visually-hidden">{t('projects.searchLabel')}</span>
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t('projects.searchPlaceholder')} />
         </label>
       </div>
       {visibleProjects.length > 0 ? (
@@ -46,12 +50,12 @@ export default function ProjectsPage() {
       ) : (
         <div className="empty-state" role="status">
           <Search size={23} />
-          <h2>No matching projects found</h2>
-          <p>Try a different search term or choose another category.</p>
-          <button type="button" className="text-link" onClick={() => { setQuery(''); setCategory('All') }}>Clear filters <ArrowUpRight size={16} /></button>
+          <h2>{t('projects.noMatches')}</h2>
+          <p>{t('projects.tryDifferent')}</p>
+          <button type="button" className="text-link" onClick={() => { setQuery(''); setCategory('all') }}>{t('projects.clearFilters')} <ArrowUpRight size={16} /></button>
         </div>
       )}
-      <p className="results-count">{visibleProjects.length} / {projects.length} projects</p>
+      <p className="results-count">{t('projects.resultsCount', { visible: visibleProjects.length, total: projects.length })}</p>
     </section>
   )
 }

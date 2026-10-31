@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 import ThreePacketScene from './ThreePacketScene'
 
 const packets = [
@@ -20,12 +21,13 @@ function clamp(value: number, min: number, max: number) {
 }
 
 export default function IntroOverlay({ duration = 18000 }: { duration?: number }) {
+  const { t } = useTranslation()
   const [visible, setVisible] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const [caught, setCaught] = useState<number[]>([])
   const [aim, setAim] = useState<Aim>({ x: 0.5, y: 0.5 })
   const [sceneMode, setSceneMode] = useState<SceneMode>('idle')
   const [sceneEnabled, setSceneEnabled] = useState(false)
-  const [status, setStatus] = useState('Move the catcher over a packet, then click or press Space.')
+  const [status, setStatus] = useState<{ key: string; caught?: number }>({ key: 'intro.statusMove' })
   const playfieldRef = useRef<HTMLDivElement>(null)
   const dragging = useRef(false)
   const caughtRef = useRef<number[]>([])
@@ -90,18 +92,16 @@ export default function IntroOverlay({ duration = 18000 }: { duration?: number }
 
     const catchRadius = Math.min(66, Math.max(50, bounds.width * 0.09))
     if (!available || available.distance > catchRadius) {
-      setStatus('No packet in range. Move closer to a 64 KB marker and try again.')
+      setStatus({ key: 'intro.statusOutOfRange' })
       return
     }
 
     const nextCaught = [...caughtRef.current, available.index]
     caughtRef.current = nextCaught
     setCaught(nextCaught)
-    setStatus(
-      nextCaught.length === packets.length
-        ? 'All four demo packets caught. Continue to the portfolio whenever you are ready.'
-        : `Packet caught. ${nextCaught.length} of ${packets.length} demo packets collected.`,
-    )
+    setStatus(nextCaught.length === packets.length
+      ? { key: 'intro.statusAllCaught' }
+      : { key: 'intro.statusCaught', caught: nextCaught.length })
   }
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
@@ -156,12 +156,12 @@ export default function IntroOverlay({ duration = 18000 }: { duration?: number }
   const dismiss = () => setVisible(false)
 
   return (
-    <aside className="intro-overlay" aria-label="Optional portfolio introduction">
+    <aside className="intro-overlay" aria-label={t('intro.ariaLabel')}>
       <section className="intro-panel" aria-labelledby="intro-title">
-        <p className="intro-kicker">Optional interaction · Trung Kiên portfolio</p>
-        <h2 id="intro-title">Catch the packets.</h2>
+        <p className="intro-kicker">{t('intro.kicker')}</p>
+        <h2 id="intro-title">{t('intro.title')}</h2>
         <p className="intro-description">
-          Catch four fictional 64 KB packets. This is a visual demo; it does not represent network traffic or site loading.
+          {t('intro.description')}
         </p>
 
         <div
@@ -169,7 +169,7 @@ export default function IntroOverlay({ duration = 18000 }: { duration?: number }
           className="packet-playfield"
           style={aimStyle}
           role="group"
-          aria-label="Packet-catching game"
+          aria-label={t('intro.gameLabel')}
           aria-describedby="packet-instructions packet-progress-label"
           aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown Space Enter"
           tabIndex={0}
@@ -196,7 +196,7 @@ export default function IntroOverlay({ duration = 18000 }: { duration?: number }
                 key={index}
                 aria-hidden="true"
               >
-                {caught.includes(index) ? 'CAUGHT' : '64 KB'}
+                {caught.includes(index) ? t('intro.caughtMarker') : '64 KB'}
               </span>
             )
           })}
@@ -204,17 +204,17 @@ export default function IntroOverlay({ duration = 18000 }: { duration?: number }
         </div>
 
         <p className="intro-hint" id="packet-instructions">
-          Move the ring with your mouse or arrows. Click, tap, drag-release, or press Space/Enter near a packet.
+          {t('intro.hint')}
         </p>
         <div className="intro-progress">
           <div className="intro-progress-label" id="packet-progress-label">
-            <span>Packets caught</span>
+            <span>{t('intro.packetsCaught')}</span>
             <span>{caught.length} / {packets.length}</span>
           </div>
           <div
             className="intro-progress-track"
             role="progressbar"
-            aria-label="Demo packets caught"
+            aria-label={t('intro.progressLabel')}
             aria-valuemin={0}
             aria-valuemax={packets.length}
             aria-valuenow={caught.length}
@@ -222,20 +222,22 @@ export default function IntroOverlay({ duration = 18000 }: { duration?: number }
             <div className="intro-progress-fill" style={{ width: `${progress}%` }} />
           </div>
         </div>
-        <p className="intro-scene-status" aria-label="3D scene status">
+        <p className="intro-scene-status" aria-label={t('intro.sceneStatusLabel')}>
           {sceneMode === 'idle'
-            ? 'Lightweight 2D preview · interact to load the optional 3D scene'
+            ? t('intro.sceneIdle')
             : sceneMode === 'initializing'
-              ? 'Preparing optional 3D scene…'
+              ? t('intro.sceneInitializing')
               : sceneMode === 'webgl'
-                ? 'Three.js scene ready'
-                : '2D scene fallback · WebGL unavailable'}
+                ? t('intro.sceneReady')
+                : t('intro.sceneFallback')}
         </p>
-        <p className="intro-live-status" role="status" aria-live="polite">{status}</p>
+        <p className="intro-live-status" role="status" aria-live="polite">
+          {t(status.key, { caught: status.caught, total: packets.length })}
+        </p>
         <div className="intro-controls">
-          <button className="intro-skip" type="button" onClick={dismiss}>Skip intro</button>
+          <button className="intro-skip" type="button" onClick={dismiss}>{t('intro.skip')}</button>
           {caught.length === packets.length && (
-            <button className="intro-continue" type="button" onClick={dismiss}>Continue to portfolio</button>
+            <button className="intro-continue" type="button" onClick={dismiss}>{t('intro.continue')}</button>
           )}
         </div>
       </section>

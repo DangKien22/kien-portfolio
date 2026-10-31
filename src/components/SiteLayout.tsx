@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { profile } from '../data/profile'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import CursorRing from './CursorRing'
 import IntroOverlay from './IntroOverlay'
 
 export default function SiteLayout() {
+  const { t, i18n } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
   const { pathname, hash } = useLocation()
   const navigate = useNavigate()
@@ -102,21 +104,21 @@ export default function SiteLayout() {
 
   const current = (section: string) => pathname === '/' && activeSection === section ? 'location' : undefined
   const sectionLinks = [
-    { id: 'home', label: '01 · Index' },
-    { id: 'about', label: '02 · About' },
-    { id: 'experience', label: '03 · Experience' },
-    { id: 'work', label: '04 · Projects' },
-    { id: 'contact', label: '05 · Contact' },
+    { id: 'home', number: '01', key: 'navigation.index' },
+    { id: 'about', number: '02', key: 'navigation.about' },
+    { id: 'experience', number: '03', key: 'navigation.experience' },
+    { id: 'work', number: '04', key: 'navigation.projects' },
+    { id: 'contact', number: '05', key: 'navigation.contact' },
   ]
 
   return (
     <>
-      <a className="skip-link" href="#main">Skip to content</a>
+      <a className="skip-link" href="#main">{t('navigation.skipToContent')}</a>
       <IntroOverlay />
       <div ref={progressRef} className="progress-hairline" aria-hidden="true" />
       {pathname === '/' && (
-        <nav className="chapter-rail" aria-label="Page sections">
-          {sectionLinks.map(({ id, label }) => (
+        <nav className="chapter-rail" aria-label={t('navigation.pageSections')}>
+          {sectionLinks.map(({ id, number, key }) => (
             <a
               className={`chapter-item${activeSection === id ? ' chapter-active' : ''}`}
               href={`/#${id}`}
@@ -124,7 +126,7 @@ export default function SiteLayout() {
               aria-current={activeSection === id ? 'location' : undefined}
               onClick={(event) => navigateToSection(event, id)}
             >
-              <span className="chapter-label">{label}</span>
+              <span className="chapter-label">{t('navigation.chapter', { number, label: t(key) })}</span>
               <span className="chapter-dot" aria-hidden="true" />
             </a>
           ))}
@@ -133,28 +135,40 @@ export default function SiteLayout() {
       <header className="site-header">
         <div className="container header-inner">
           <div className="header-topline">
-            <Link className="wordmark" to="/#main" aria-label={`${profile.displayName} — home`} onClick={closeMenu}>
+            <Link className="wordmark" to="/#main" aria-label={t('navigation.homeLabel', { name: profile.name })} onClick={closeMenu}>
               {profile.displayName} <span>·</span>
             </Link>
-            <span className="header-location">{profile.location}</span>
+            <span className="header-location">{t('hero.location')}</span>
           </div>
           <div className="header-bottomline">
+          <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label={t('navigation.main')}>
+            <a href="/#home" aria-current={current('home')} onClick={(event) => navigateToSection(event, 'home')}>{t('navigation.index')}</a>
+            <a href="/#about" aria-current={current('about')} onClick={(event) => navigateToSection(event, 'about')}>{t('navigation.about')}</a>
+            <a href="/#experience" aria-current={current('experience')} onClick={(event) => navigateToSection(event, 'experience')}>{t('navigation.experience')}</a>
+            <a href="/#work" aria-current={current('work')} onClick={(event) => navigateToSection(event, 'work')}>{t('navigation.projects')}</a>
+            <a href="/#contact" aria-current={current('contact')} onClick={(event) => navigateToSection(event, 'contact')}>{t('navigation.contact')}</a>
+          </nav>
+          <div className="language-switcher" role="group" aria-label={t('navigation.language')}>
+            {(['en', 'vi'] as const).map((language) => (
+              <button
+                type="button"
+                key={language}
+                aria-pressed={i18n.resolvedLanguage === language}
+                onClick={() => { void i18n.changeLanguage(language) }}
+              >
+                {language.toUpperCase()}
+              </button>
+            ))}
+          </div>
           <button
             className="menu-toggle"
             type="button"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={menuOpen ? t('navigation.closeMenu') : t('navigation.openMenu')}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-          <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
-            <a href="/#home" aria-current={current('home')} onClick={(event) => navigateToSection(event, 'home')}>Index</a>
-            <a href="/#about" aria-current={current('about')} onClick={(event) => navigateToSection(event, 'about')}>About</a>
-            <a href="/#experience" aria-current={current('experience')} onClick={(event) => navigateToSection(event, 'experience')}>Experience</a>
-            <a href="/#work" aria-current={current('work')} onClick={(event) => navigateToSection(event, 'work')}>Projects</a>
-            <a href="/#contact" aria-current={current('contact')} onClick={(event) => navigateToSection(event, 'contact')}>Contact</a>
-          </nav>
           </div>
         </div>
       </header>
@@ -163,9 +177,9 @@ export default function SiteLayout() {
       </main>
       <footer className="site-footer">
         <div className="container footer-inner">
-          <Link className="wordmark" to="/#main" aria-label={`${profile.displayName} — home`}>{profile.displayName} <span>·</span></Link>
-          <p>{profile.title} · {profile.location}</p>
-          <a className="footer-top" href="#main">Back to top <ArrowUpRight size={13} /></a>
+          <Link className="wordmark" to="/#main" aria-label={t('navigation.homeLabel', { name: profile.name })}>{profile.displayName} <span>·</span></Link>
+          <p>{t('hero.role')} · {t('hero.location')}</p>
+          <a className="footer-top" href="#main">{t('footer.backToTop')} <ArrowUpRight size={13} /></a>
           <span>© {new Date().getFullYear()} {profile.displayName}</span>
         </div>
       </footer>

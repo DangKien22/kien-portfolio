@@ -60,6 +60,10 @@ button { color: inherit; }
 .main-nav .nav-resume::after { display: none; }
 .main-nav .nav-resume:hover { background: var(--accent-dark); }
 .menu-toggle { display: none; border: 1px solid var(--line); background: transparent; color: var(--text); }
+.language-switcher { display: inline-flex; align-items: center; gap: 3px; margin-left: clamp(14px, 2vw, 24px); padding: 3px; border: 1px solid var(--line); border-radius: 2px; font-family: var(--mono); font-size: 10px; }
+.language-switcher button { min-width: 32px; min-height: 28px; padding: 0 6px; border: 0; background: transparent; color: var(--faint); font-family: inherit; font-size: inherit; letter-spacing: .5px; cursor: pointer; transition: background .2s ease, color .2s ease; }
+.language-switcher button:hover { color: var(--text); }
+.language-switcher button[aria-pressed="true"] { background: var(--accent-dark); color: var(--accent); }
 
 .hero { position: relative; display: grid; min-height: calc(100svh - 73px); grid-template-columns: 1.1fr .9fr; align-items: center; gap: 30px; padding-top: 64px; padding-bottom: 89px; }
 .hero.container { width: min(1280px, calc(100% - 144px)); padding-inline: 64px; }
