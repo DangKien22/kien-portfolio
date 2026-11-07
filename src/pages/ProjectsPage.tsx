@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { ArrowUpRight, Search } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import ProjectCard from '../components/ProjectCard'
@@ -11,12 +11,13 @@ export default function ProjectsPage() {
   const { t } = useTranslation()
   const [category, setCategory] = useState<(typeof filters)[number]>('all')
   const [query, setQuery] = useState('')
-  const visibleProjects = useMemo(() => projects.filter((project) => {
+  const normalizedQuery = query.trim().toLowerCase()
+  const visibleProjects = projects.filter((project) => {
     const matchesCategory = category === 'all' || project.category === category
     const itemKey = `projects.items.${project.id}`
     const searchText = `${t(`${itemKey}.name`)} ${t(`${itemKey}.overview`)} ${project.technologies.join(' ')}`.toLowerCase()
-    return matchesCategory && searchText.includes(query.trim().toLowerCase())
-  }), [category, query, t])
+    return matchesCategory && searchText.includes(normalizedQuery)
+  })
 
   return (
     <section className="projects-page container">
@@ -26,7 +27,7 @@ export default function ProjectsPage() {
         <p>{t('projects.pageDescription')}</p>
       </div>
       <div className="project-toolbar">
-        <div className="filter-list" aria-label={t('projects.filterByCategory')}>
+        <div className="filter-list" role="group" aria-label={t('projects.filterByCategory')}>
           {filters.map((filter) => (
             <button
               className={`filter-button${category === filter ? ' is-active' : ''}`}

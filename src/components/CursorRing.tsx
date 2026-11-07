@@ -15,11 +15,16 @@ export default function CursorRing() {
     let currentY = targetY
     let frame = 0
 
+    const scheduleAnimation = () => {
+      if (frame === 0) frame = window.requestAnimationFrame(animate)
+    }
+
     const onPointerMove = (event: PointerEvent) => {
       if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return
       targetX = event.clientX
       targetY = event.clientY
       ring.style.opacity = '1'
+      scheduleAnimation()
     }
 
     const onPointerOver = (event: PointerEvent) => {
@@ -35,18 +40,23 @@ export default function CursorRing() {
     }
 
     const animate = () => {
+      frame = 0
       currentX += (targetX - currentX) * 0.18
       currentY += (targetY - currentY) * 0.18
       ring.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`
-      frame = window.requestAnimationFrame(animate)
+
+      if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+        scheduleAnimation()
+      } else {
+        currentX = targetX
+        currentY = targetY
+      }
     }
 
     document.documentElement.classList.add('custom-cursor')
     window.addEventListener('pointermove', onPointerMove, { passive: true })
     window.addEventListener('pointerover', onPointerOver, { passive: true })
     document.documentElement.addEventListener('pointerleave', onPointerLeave)
-    frame = window.requestAnimationFrame(animate)
-
     return () => {
       window.removeEventListener('pointermove', onPointerMove)
       window.removeEventListener('pointerover', onPointerOver)

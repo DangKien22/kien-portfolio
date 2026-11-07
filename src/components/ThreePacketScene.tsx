@@ -33,6 +33,7 @@ export default function ThreePacketScene({ enabled, aim, packets, caught, onMode
   useEffect(() => {
     let disposed = false
     let frame = 0
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
     let renderer: THREE.WebGLRenderer | undefined
     let scene: THREE.Scene | undefined
     let camera: THREE.OrthographicCamera | undefined
@@ -63,6 +64,8 @@ export default function ThreePacketScene({ enabled, aim, packets, caught, onMode
     const showFallback = () => {
       if (disposed) return
       window.cancelAnimationFrame(frame)
+      cleanupListeners()
+      cleanupListeners = () => {}
       renderer?.dispose()
       renderer?.domElement.remove()
       renderer = undefined
@@ -174,7 +177,7 @@ export default function ThreePacketScene({ enabled, aim, packets, caught, onMode
             if (!mesh) return
             mesh.visible = !caughtSet.has(index)
             setWorldPosition(mesh, point)
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            if (!reducedMotion.matches) {
               mesh.rotation.x = 0.35 + Math.sin(time * 0.0012 + index) * 0.17
               mesh.rotation.y = time * 0.00055 + index * 0.7
               mesh.position.y += Math.sin(time * 0.0015 + index * 2) * 0.035
@@ -182,14 +185,14 @@ export default function ThreePacketScene({ enabled, aim, packets, caught, onMode
           })
           if (aimRing) {
             setWorldPosition(aimRing, current.aim)
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            if (!reducedMotion.matches) {
               aimRing.rotation.z = time * 0.00022
               const pulse = 1 + Math.sin(time * 0.004) * 0.05
               aimRing.scale.setScalar(pulse)
             }
           }
           renderer.render(scene, camera)
-          if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !document.hidden) {
+          if (!reducedMotion.matches && !document.hidden) {
             frame = window.requestAnimationFrame(render)
           }
         }
@@ -202,9 +205,6 @@ export default function ThreePacketScene({ enabled, aim, packets, caught, onMode
         renderer.domElement.addEventListener('webglcontextlost', handleContextLost)
         window.addEventListener('resize', resize, { passive: true })
         document.addEventListener('visibilitychange', resize)
-        resize()
-        render(performance.now())
-        modeCallbackRef.current('webgl')
 
         const stopOnHidden = () => {
           window.cancelAnimationFrame(frame)
@@ -218,6 +218,10 @@ export default function ThreePacketScene({ enabled, aim, packets, caught, onMode
           document.removeEventListener('visibilitychange', resize)
           document.removeEventListener('visibilitychange', stopOnHidden)
         }
+
+        resize()
+        render(performance.now())
+        modeCallbackRef.current('webgl')
       } catch (error) {
         console.error('Unable to initialize the WebGL intro scene; using the 2D fallback.', error)
         showFallback()

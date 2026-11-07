@@ -29,13 +29,18 @@ export default function IntroOverlay({ duration = 18000 }: { duration?: number }
   const [sceneEnabled, setSceneEnabled] = useState(false)
   const [status, setStatus] = useState<{ key: string; caught?: number }>({ key: 'intro.statusMove' })
   const playfieldRef = useRef<HTMLDivElement>(null)
+  const skipButtonRef = useRef<HTMLButtonElement>(null)
   const dragging = useRef(false)
   const caughtRef = useRef<number[]>([])
   const sceneStarted = useRef(false)
   const wasVisible = useRef(visible)
 
   useEffect(() => {
-    if (wasVisible.current && !visible) document.getElementById('main')?.focus()
+    if (visible) {
+      skipButtonRef.current?.focus()
+    } else if (wasVisible.current) {
+      document.getElementById('main')?.focus()
+    }
     wasVisible.current = visible
   }, [visible])
 
@@ -149,6 +154,31 @@ export default function IntroOverlay({ duration = 18000 }: { duration?: number }
     }
   }
 
+  const handleDialogKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'Tab') return
+
+    const focusableElements = Array.from(
+      event.currentTarget.querySelectorAll<HTMLElement>(
+        'a[href], button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((element) => !element.hasAttribute('hidden') && element.getAttribute('aria-hidden') !== 'true')
+    const firstElement = focusableElements[0]
+    const lastElement = focusableElements[focusableElements.length - 1]
+
+    if (!firstElement || !lastElement) {
+      event.preventDefault()
+      return
+    }
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault()
+      lastElement.focus()
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault()
+      firstElement.focus()
+    }
+  }
+
   if (!visible) return null
 
   const progress = Math.round((caught.length / packets.length) * 100)
@@ -156,8 +186,14 @@ export default function IntroOverlay({ duration = 18000 }: { duration?: number }
   const dismiss = () => setVisible(false)
 
   return (
-    <aside className="intro-overlay" aria-label={t('intro.ariaLabel')}>
-      <section className="intro-panel" aria-labelledby="intro-title">
+    <div
+      className="intro-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="intro-title"
+      onKeyDown={handleDialogKeyDown}
+    >
+      <div className="intro-panel">
         <p className="intro-kicker">{t('intro.kicker')}</p>
         <h2 id="intro-title">{t('intro.title')}</h2>
         <p className="intro-description">
@@ -235,12 +271,12 @@ export default function IntroOverlay({ duration = 18000 }: { duration?: number }
           {t(status.key, { caught: status.caught, total: packets.length })}
         </p>
         <div className="intro-controls">
-          <button className="intro-skip" type="button" onClick={dismiss}>{t('intro.skip')}</button>
+          <button ref={skipButtonRef} className="intro-skip" type="button" onClick={dismiss}>{t('intro.skip')}</button>
           {caught.length === packets.length && (
             <button className="intro-continue" type="button" onClick={dismiss}>{t('intro.continue')}</button>
           )}
         </div>
-      </section>
-    </aside>
+      </div>
+    </div>
   )
 }

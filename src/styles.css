@@ -258,6 +258,7 @@ h2 { font-family: 'Manrope', sans-serif; }
 .filter-button.is-active { border-color: var(--line); background: var(--surface-raised); color: var(--accent); }
 .search-field { display: flex; min-width: 185px; align-items: center; gap: 8px; color: var(--faint); }
 .search-field input { width: 100%; padding: 8px 0; border: 0; outline: 0; background: transparent; color: var(--text); font-size: 11px; }
+.search-field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .search-field input::placeholder { color: var(--faint); }
 .results-count { margin-top: 35px; color: var(--faint); font-family: var(--mono); font-size: 10px; }
 .empty-state { display: grid; min-height: 250px; align-content: center; justify-items: center; border: 1px dashed var(--line); color: var(--muted); text-align: center; }
