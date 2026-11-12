@@ -11,7 +11,7 @@ Portfolio mẫu của Trung Kiên, Frontend Developer, xây dựng bằng React,
 - Dữ liệu hồ sơ và dự án được tách riêng trong `src/data/`.
 - Email hiển thị là địa chỉ placeholder `trung-kien@example.com`; các dự án là concept hư cấu, không có liên kết demo.
 - Hero hiện dùng monogram trang trí; scene 3D tương tác thuộc giai đoạn triển khai tiếp theo.
-- CV cá nhân và ảnh bên thứ ba không được đưa vào repository.
+- CV cá nhân không được đưa vào repository hoặc build production; ảnh bên thứ ba không được đưa vào repository.
 
 ## Yêu cầu
 
